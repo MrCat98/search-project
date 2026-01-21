@@ -1,0 +1,22 @@
+body{
+    display:flex;
+    justify-content: center;
+    padding-top:80px;
+}
+
+.container {
+    width:660px;
+    height:760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+}
+
+.search-form{
+     background-color: brown;
+    &__input{
+       width:300px;
+       height:300px;
+    }
+}
