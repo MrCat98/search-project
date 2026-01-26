@@ -1,19 +1,69 @@
-body{
-    display:flex;
-    justify-content: center;
-    padding-top:80px;
+body {
+  font-family: "Roboto";
+    margin: 0;
+    padding:0;
 }
 
-.app{
+.search-container {
+    position: absolute;
+    top:20%;
+    left:20%;;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: gray;
+  width: 665px;
+  height: 765px;
+}
+
+#search-input {
+  font-size: 35px;
+  font-weight: 400;
+  width: 500px;
+  height: 61px;
+}
+
+li{
+    list-style: none;
     display: flex;
-    justify-content: center;
-    height:800px;
-    width:30%;
-    background-color: aqua;
+    align-items: center;
+    justify-content: space-between;
+    position:relative;
+    right:20px;
+    border: 2px solid black;
+    padding-left:13px;
 }
 
-#search{
-    height:30px;
-    width:200px;
-    margin-top:100px;
+.autocomplete-item{
+    background-color: aliceblue;
+    width:500px;
+    height: 30px;
+    margin:2px;
+    font-weight:400;
+    font-size: 20px;
+    border-radius:8px;
+}
+
+.repo-item{
+    width:500px;
+    height:100px;
+    background-color: aqua;
+    font-weight: 400;
+    font-size:24px;
+    padding-right:13px;
+    border-radius:20px;
+}
+
+.btn-del{
+    width: 70px;
+    height: 70px;
+    font-size:80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid ;
+    border-radius:30px;
+    
 }

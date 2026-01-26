@@ -1,5 +1,5 @@
-const input = document.getElementById("search");
-const autocomplete = document.getElementById("autocomplete");
+const searchInput = document.getElementById("search-input");
+const autocompleteList = document.getElementById("autocomplete-list");
 const repoList = document.getElementById("repo-list");
 // функция debounce
 const debounce = (fn, delay) => {
@@ -23,7 +23,7 @@ async function fetchRep(query) {
   }
   try {
     const response = await fetch(
-      "https://api.github.com/search/repositories?q=Q",
+      "https://api.github.com/search/repositories?q=g&per_page=5",
     );
     if (response.ok) {
       const data = await response.json();
@@ -47,3 +47,38 @@ function showAutocomplete(repos) {
     autocompleteList.appendChild(li);
   });
 }
+
+function clearAutocomplete() {
+  autocompleteList.innerHTML = "";
+}
+
+// добавление репозитория в список
+
+function addRepoToList(repo) {
+  const li = document.createElement("li");
+  li.classList.add("repo-item");
+
+  li.innerHTML = `
+        <div>
+            Name: ${repo.name}<br>
+            Owner: ${repo.owner.login}<br>
+            Stars: ${repo.stargazers_count}
+        </div>
+        <button class = 'btn-del'>&times;</button>
+        `;
+  // кнопка удоления при нажатие удоляет список
+  li.querySelector(".btn-del").addEventListener("click", () => li.remove());
+
+  repoList.appendChild(li);
+  searchInput.value = ""; //очистка инпута
+  clearAutocomplete(); //очистка вариантов
+}
+
+//задержка слушателя ввода
+
+searchInput.addEventListener(
+  "input",
+  debounce((e) => {
+    fetchRep(e.target.value);
+  }, 1000),
+);
