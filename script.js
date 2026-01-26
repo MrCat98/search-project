@@ -80,5 +80,5 @@ searchInput.addEventListener(
   "input",
   debounce((e) => {
     fetchRep(e.target.value);
-  }, 1000),
+  }, 500),
 );
