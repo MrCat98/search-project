@@ -9,7 +9,7 @@ const debounce = (fn, delay) => {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
-      (fn.apply(this, arr), delay);
+      (fn.apply(this, arr));
     }, delay);
   };
 };
@@ -18,12 +18,12 @@ const debounce = (fn, delay) => {
 
 async function fetchRep(query) {
   if (!query.trim()) {
-    clearAutocomplete(data.items);
+    clearAutocomplete();
     return;
   }
   try {
     const response = await fetch(
-      "https://api.github.com/search/repositories?q=g&per_page=5",
+      `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&per_page=5`
     );
     if (response.ok) {
       const data = await response.json();
